@@ -1,0 +1,9 @@
+services:
+  bacteria:
+    build: .
+    image: bacteria
+    restart: unless-stopped
+    ports:
+      # Localhost only: Caddy on the host proxies to it. Docker bypasses UFW,
+      # so "3000:3000" would expose the app publicly over plain HTTP.
+      - "127.0.0.1:6000:3000"
